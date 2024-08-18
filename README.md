@@ -1,4 +1,4 @@
-# CreanMap
+# CleanMap
 
 ## サイト概要
 
