@@ -7,9 +7,11 @@ class PostGenresController < ApplicationController
   def create
     @post_genre = PostGenre.new(post_genre_params)
     if @post_genre.save
-      redirect_to post_genres_path, notice: "登録しました"
+      flash[:notice] = "正常に登録しました"
+      redirect_to post_genres_path
     else
       @post_genres = PostGenre.all
+      flash[:alert] = "登録に失敗しました"
       render :index
     end
   end

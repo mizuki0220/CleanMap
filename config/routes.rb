@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'post_genres/index'
-  get 'post_genres/create'
-  get 'post_genres/edit'
-  get 'post_genres/update'
   root to: 'homes#top'
 
   get 'home/about' => 'homes#about', as: 'about'

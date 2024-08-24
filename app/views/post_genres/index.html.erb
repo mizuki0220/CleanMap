@@ -1,18 +1,25 @@
-<div class="col-sm-12">
-    <h2 class="text-center">投稿ジャンルの追加</h2>
-    <%= form_with model: @post_genre, local: true do |f| %>
-        <div class="form_input">
-            <%= f.label :name %>
-            <%= f.text_field :name, class:"form-control" %>
-        </div>
-        <div class="form_action row">
-            <%= f.submit "登録する", class: "btn col-sm-12 submit_btn" %>
-        </div>
-    <% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-sm-12">
+        <h2 class="text-center">投稿ジャンルの追加</h2>
+        <%= form_with model: @post_genre, local: true do |f| %>
+            <div class="form_input">
+                <%= f.label :name %>
+                <%= f.text_field :name, class:"form-control" %>
+            </div>
+            <div class="text-center">
+                <%= f.submit "登録する", class: "btn btn-lg btn-info mt-4" %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="col-sm-12 mt-5">
+    <h2 class="text-center">投稿ジャンル一覧</h2>
+        <% @post_genres.each do |post_genre| %>
+            <%= post_genre.name %>
+        <% end %>
+    </div>
+  </div>
 </div>
 
-<h1>投稿ジャンル一覧</h1>
-    <% @post_genres.each do |post_genre| %>
-        <%= post_genre.name %>
-    <% end %>
 
