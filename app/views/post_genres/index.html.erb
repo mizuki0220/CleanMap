@@ -4,7 +4,7 @@
         <h2 class="text-center">投稿ジャンルの追加</h2>
         <%= form_with model: @post_genre, local: true do |f| %>
             <div class="form_input">
-                <%= f.label :name %>
+                <%= f.label :GenreName %>
                 <%= f.text_field :name, class:"form-control" %>
             </div>
             <div class="text-center">

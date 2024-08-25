@@ -1,4 +1,6 @@
 class PostGenre < ApplicationRecord
-  belongs_to :posts
-  
+  has_many :posts
+
+  validates :name, presence: true
+
 end
