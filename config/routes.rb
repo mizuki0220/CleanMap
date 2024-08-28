@@ -16,5 +16,22 @@ Rails.application.routes.draw do
   resources :comments
   resources :post_genres
 
+  resources :users do
+    member do
+      get 'mypage'
+    end
+    collection do
+      get 'unsubscribe'
+      patch 'withdraw'
+    end
+  end
+  
+  resources :homes do
+    collection do
+      get 'map'
+    end
+  end
+  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

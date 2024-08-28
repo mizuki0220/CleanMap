@@ -26,7 +26,7 @@
           <% if user_signed_in? %>
 
             <li class="nav-item">
-              <%= link_to "My Page", new_post_path, class: 'nav-link text-dark' %>
+              <%= link_to "My Page", mypage_user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "Post", new_post_path, class: 'nav-link text-dark' %>
@@ -37,6 +37,10 @@
             <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
           <% else %>
              <li class="nav-item">
               <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
@@ -50,10 +54,6 @@
           <% end %>
           </ul>
         </div>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark" type="submit">Search</button>
-        </form>
         </div>
       </nav>
     </header>

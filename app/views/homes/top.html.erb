@@ -1,7 +1,20 @@
-<h1>Come on! Let's clean up!</h1>
+<div class="container">
+    <div class="row">
+      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+        <h1>Come on! Let's clean up!</h1>
 
-<%= link_to "Sign up", new_user_registration_path %>
-
-<%= link_to "Log in", new_user_session_path %>
-
-<%= link_to 'Guest', users_guest_sign_in_path, method: :post %>
+          <div class="d-grid gap-2 col-6 mx-auto">
+          <div class="row">
+            <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
+          </div>
+          <div class="row">
+            <a class="btn btn-success btn-sm btn-block mb-3 sign_up" href="/users/sign_up">Sign up</a>
+          </div>
+          <div class="row">
+            <div type="button" class="btn btn-success btn-sm btn-block mb-3">
+              <%= link_to 'Guest', users_guest_sign_in_path, method: :post %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
