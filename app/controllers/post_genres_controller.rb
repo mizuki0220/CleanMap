@@ -17,9 +17,24 @@ class PostGenresController < ApplicationController
   end
 
   def edit
+    @post_genre = PostGenre.find(params[:id])
   end
 
   def update
+    @post_genre = PostGenre.find(params[:id])
+    if @post_genre.update(post_genre_params)
+      flash[:notice] = "編集が完了しました。"
+      redirect_to post_genres_path
+    else
+      flash[:alert] = "登録に失敗しました。"
+      render :edit
+    end
+  end
+
+  def destroy
+    post_genre = PostGenre.find(params[:id])
+    post_genre.destroy
+    redirect_to post_genres_path
   end
 
   private
