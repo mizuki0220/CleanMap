@@ -4,10 +4,16 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:post_genres_id]
+      @post_genre = PostGenre.find(params[:post_genres_id])
+      @posts = @post_genre.posts.order(created_at: :desc).all
+    else
+      @posts = Post.order(created_at: :desc).all
+    end
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -22,6 +28,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -31,9 +38,8 @@ class PostsController < ApplicationController
   end
 
   private
-  def book_params
-    params.require(:post).permit(:title, :body)
+  def post_params
+    params.require(:post).permit(:title, :body, images: [], post_genres_id: [])
   end
-
 
 end

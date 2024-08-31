@@ -13,7 +13,10 @@
     <% end %>
 
     <%= form_with model: @post, local: true do |f| %>
-    <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
+    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
+    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
+
         <div class="form_input">
             <%= f.label :title %>
             <%= f.text_field :title, class: "form-control" %>

@@ -14,6 +14,7 @@ import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/map";
 import "../stylesheets/top";
+import "images.js"
 
 
 Rails.start()
