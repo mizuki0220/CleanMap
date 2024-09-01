@@ -4,24 +4,25 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:post_genres_id]
-      @post_genre = PostGenre.find(params[:post_genres_id])
-      @posts = @post_genre.posts.order(created_at: :desc).all
+    if params[:genre]
+     @genre = params[:genre]
+     @posts = Post.joins(:post_genre).where(post_genres: { name: @genre })
     else
-      @posts = Post.order(created_at: :desc).all
+      @posts = Post.all
     end
   end
 
   def show
     @post = Post.find(params[:id])
+    @genre = @post.post_genre.name
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save!
+    if @post.save
       flash[:notice] = "Successfully submitted!"
-      redirect_to :show
+      redirect_to post_path(@post.id)
     else
       render :new
     end
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :post_genres_id, images: [])
+    params.require(:post).permit(:title, :body, :post_genre_id, images: [])
   end
 
 end

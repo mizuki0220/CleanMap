@@ -15,7 +15,7 @@
     <%= form_with model: @post, local: true do |f| %>
     <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
     <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
-
+    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
         <div class="form_input">
             <%= f.label :title %>
             <%= f.text_field :title, class: "form-control" %>
@@ -25,8 +25,8 @@
             <%= f.text_area :body, class: "form-control" %>
         </div>
         <div class="form_input">
-            <%= f.label :post_genres_id %>
-            <%= f.collection_select :post_genres_id, PostGenre.all, :id, :name, :include_blank => "お掃除箇所の選択" %>
+            <%= f.label :post_genre_id %>
+            <%= f.collection_select :post_genre_id, PostGenre.all, :id, :name, :include_blank => "お掃除箇所の選択" %>
         </div>
         <div class="text-center">
             <%= f.submit "Posting", class: "btn btn-lg btn-info mt-4" %>

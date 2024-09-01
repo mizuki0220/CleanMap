@@ -1,5 +1,6 @@
 .main-container {
-  background-image: url(assets/images/homemap1.png);
+  background-image: url(/assets/homemap1.png);
   background-size: cover;
   background-position: center;
+  aspect-ratio: 4/3;
 }

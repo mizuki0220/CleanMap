@@ -1,18 +1,18 @@
-<h2 class="text-center">POST LIST</h2>
-<div class="card-list-container py-5">
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
-    <div class="col-sm-12">
-        <% @posts.each do |post| %>
-            <%= attachment_image_tag post, :images, fallback: "no_image.jpg", size:'80x80', class: "card-img-top"; %>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2">
-                    <%= post.title %>
-                    <%= post.body %>
-                </div>
-              </div>
-            </div>
-        <% end %>
-    </div>
+<h2 class="text-center"><%= @genre %>Posts</h2>
+
+<% @posts.each do |post| %>
+  <div>
+    <% if post.images.attached? %>
+      <% post.images.each do |image| %>
+        <%= image_tag image, size: "200x200" %> <br>
+      <% end %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %><br>
+    <% end %>
+    <h3><%= post.title %></h3>
+    <p><%= post.body %></p>
+    <p>ジャンル:<%= post.post_genre.name %></p>
+    <p>投稿者: <%= post.user.name %></p>
+    <%= post.created_at %>
   </div>
-</div>
+<% end %>
