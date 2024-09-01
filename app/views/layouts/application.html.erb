@@ -35,7 +35,7 @@
               <%= link_to "Post List", posts_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <form class="form-inline">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

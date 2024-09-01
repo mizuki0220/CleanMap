@@ -7,11 +7,11 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :comments
-  belongs_to :post_genres
+  belongs_to :post_genre
 
   validates :title, presence: true
   validates :body, presence: true
-  validates :post_genres_id, presence: true
+  # validates :post_genre_id, presence: true
 
   private
 

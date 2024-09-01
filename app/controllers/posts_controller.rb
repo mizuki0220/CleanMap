@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
+    if @post.save!
       flash[:notice] = "Successfully submitted!"
       redirect_to :show
     else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, images: [], post_genres_id: [])
+    params.require(:post).permit(:title, :body, :post_genres_id, images: [])
   end
 
 end

@@ -1,5 +1,5 @@
 class PostGenre < ApplicationRecord
-  has_many :posts
+  has_one :post
 
   validates :name, presence: true
 
