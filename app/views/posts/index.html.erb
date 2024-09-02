@@ -1,18 +1,23 @@
-<h2 class="text-center"><%= @genre %>Posts</h2>
-
-<% @posts.each do |post| %>
-  <div>
-    <% if post.images.attached? %>
-      <% post.images.each do |image| %>
-        <%= image_tag image, size: "200x200" %> <br>
-      <% end %>
-    <% else %>
-      <%= image_tag 'no_image', size: "200x200" %><br>
-    <% end %>
-    <h3><%= post.title %></h3>
-    <p><%= post.body %></p>
-    <p>ジャンル:<%= post.post_genre.name %></p>
-    <p>投稿者: <%= post.user.name %></p>
-    <%= post.created_at %>
-  </div>
-<% end %>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+          <h2 class="text-center border-bottom border-secondary"><%= @genre %>Posts</h2>
+          <% @posts.each do |post| %>
+            <div>
+              <% if post.images.attached? %>
+                <% post.images.each do |image| %>
+                  <%= image_tag image, size: "100x100" %> <br>
+                <% end %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %><br>
+              <% end %>
+              <h4><%= post.title %></h4>
+              <p><%= post.body %></p>
+              <p>ジャンル:<%= post.post_genre.name %></p>
+              <p>投稿者: <%= post.user.name %></p>
+              <%= post.created_at %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+</div>

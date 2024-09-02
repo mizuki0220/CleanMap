@@ -1,5 +1,37 @@
-<p><%= @user.name %>さんの My Page</p>
-
-<div class="col-sm-12">
-    <h2 class="text-center">MY POST</h2>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-sm-12">
+            <h1 class="text-center"><%= current_user.name %>さんの My Page</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center border border-5 py-4">
+            <p>ユーザー名: <%= current_user.name %></p>
+            <p>メールアドレス: <%= current_user.email %></p>
+            <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
+        </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-sm-6">
+            <h2 class="text-center border-bottom border-secondary">MY POST</h2>
+            <div>
+            <% @posts.each do |post| %>
+                <div class="border-bottom border-5 py-4">
+                  <% if post.images.attached? %>
+                    <% post.images.each do |image| %>
+                      <%= image_tag image, size: "100x100" %> <br>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %><br>
+                  <% end %>
+                  <h4><%= link_to post.title, post_path(post) %></h4>
+                  <p><%= post.body %></p>
+                  <p>投稿ジャンル: <%= link_to post.post_genre.name, posts_path(post.post_genre) %> </p>
+                  <p>投稿者: <%= post.user.name %></p>
+                  <%= post.created_at %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
 </div>

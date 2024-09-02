@@ -1,35 +1,38 @@
-<div class="col-sm-12">
-    <h2 class="text-center">POST</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-center border-bottom border-secondary">POST</h2>
+            <% if @post.errors.any? %>
+              <ul class="alert alert-danger" role="alert">
+                <h6 class="alert-heading">
+                  <%= @post.errors.count %>件のエラーが発生しました
+                </h6>
+                <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
 
-    <% if @post.errors.any? %>
-      <ul class="alert alert-danger" role="alert">
-        <h6 class="alert-heading">
-          <%= @post.errors.count %>件のエラーが発生しました
-        </h6>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <%= form_with model: @post, local: true do |f| %>
-    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
-    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
-    <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
-        <div class="form_input">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "form-control" %>
+            <%= form_with model: @post, local: true do |f| %>
+            <%= f.file_field :images, multiple: true, id: 'images', class: "w-100" %>
+            <%= f.file_field :images, multiple: true, id: 'images', class: "w-100 mt-3" %>
+            <%= f.file_field :images, multiple: true, id: 'images', class: "w-100 mt-3" %>
+                <div class="form_input mt-4">
+                    <%= f.label :題名 %>
+                    <%= f.text_field :title, class: "form-control" %>
+                </div>
+                <div class="form_input">
+                    <%= f.label :内容 %>
+                    <%= f.text_area :body, class: "form-control" %>
+                </div>
+                <div class="form_input mt-3">
+                    <%= f.label :投稿ジャンル %>
+                    <%= f.collection_select :post_genre_id, PostGenre.all, :id, :name, :include_blank => "お掃除箇所の選択" %>
+                </div>
+                <div class="text-center">
+                    <%= f.submit "Posting", class: "btn btn-lg btn-info mt-3 mb-5" %>
+                </div>
+            <% end %>
         </div>
-        <div class="form_input">
-            <%= f.label :body %>
-            <%= f.text_area :body, class: "form-control" %>
-        </div>
-        <div class="form_input">
-            <%= f.label :post_genre_id %>
-            <%= f.collection_select :post_genre_id, PostGenre.all, :id, :name, :include_blank => "お掃除箇所の選択" %>
-        </div>
-        <div class="text-center">
-            <%= f.submit "Posting", class: "btn btn-lg btn-info mt-4" %>
-        </div>
-    <% end %>
+    </div>
 </div>
