@@ -14,24 +14,22 @@
     <div class="row mt-4 justify-content-center">
         <div class="col-sm-6">
             <h2 class="text-center border-bottom border-secondary">MY POST</h2>
-            <div>
             <% @posts.each do |post| %>
-                <div class="border-bottom border-5 py-4">
-                  <% if post.images.attached? %>
+              <div>
+                <% if post.images.attached? %>
                     <% post.images.each do |image| %>
                       <%= image_tag image, size: "100x100" %> <br>
                     <% end %>
-                  <% else %>
+                <% else %>
                     <%= image_tag 'no_image', size: "100x100" %><br>
-                  <% end %>
-                  <h4><%= link_to post.title, post_path(post) %></h4>
-                  <p><%= post.body %></p>
-                  <p>投稿ジャンル: <%= link_to post.post_genre.name, posts_path(post.post_genre) %> </p>
-                  <p>投稿者: <%= post.user.name %></p>
-                  <%= post.created_at %>
-                </div>
+                <% end %>
+                <h4><%= link_to post.title, post_path(post) %></h4>
+                <h5><%= post.body %></h5>
+                <p>投稿ジャンル: <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %> </p>
+                <p>投稿者: <%= post.user.name %></p>
+                <%= post.created_at %>
+              </div>
             <% end %>
-            </div>
         </div>
     </div>
 </div>

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+
   def mypage
     @posts = current_user.posts
-    @post_genres = PostGenre.all
+    @post_genres = PostGenre.where(id: @posts.pluck(:post_genre_id)).uniq
   end
 
   def edit
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def withdraw
   end
-  
+
     private
 
   def user_params
