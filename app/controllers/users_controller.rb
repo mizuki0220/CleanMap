@@ -7,12 +7,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-  end
-
-  def show
+    @user = User.find(current_user.id)
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報の更新が完了しました。"
+      redirect_to mypage_user_path(current_user.id)
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -24,7 +29,7 @@ class UsersController < ApplicationController
     private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :email)
   end
 
   def is_matching_login_user

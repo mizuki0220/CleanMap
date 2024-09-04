@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "Successfully submitted!"
+      flash[:notice] = "投稿しました。"
       redirect_to post_path(@post.id)
     else
       render :new
@@ -43,9 +43,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = PostGenre.find(params[:id])
+    post = Post.find(params[:id])
     post.destroy
-    redirect_to post_path
+    redirect_to mypage_user_path(current_user.id)
 
   end
 
