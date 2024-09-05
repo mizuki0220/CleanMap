@@ -13,4 +13,8 @@ class User < ApplicationRecord
       user.name = "Guest"
     end
   end
+
+  def active_for_authentication?
+    super && (self.is_active == false)
+  end
 end

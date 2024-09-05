@@ -8,7 +8,10 @@
         <div class="col-sm-6 text-center border border-5 py-4">
             <p>ユーザー名: <%= current_user.name %></p>
             <p>メールアドレス: <%= current_user.email %></p>
+            <% if user_signed_in? && @user.id == current_user.id %>
             <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
+            <%= link_to "退会", unsubscribe_users_path, class: "btn btn-danger" %>
+            <% end %>
         </div>
     </div>
     <div class="row mt-4 justify-content-center">
@@ -27,7 +30,7 @@
                 <h5><%= post.body %></h5>
                 <p>投稿ジャンル: <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %> </p>
                 <p>投稿者: <%= post.user.name %></p>
-                <%= post.created_at %>
+                <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
               </div>
             <% end %>
         </div>

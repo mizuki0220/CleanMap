@@ -15,7 +15,7 @@
               <h5><%= post.body %></h5>
               <p>ジャンル:<%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></p>
               <p>投稿者: <%= post.user.name %></p>
-              <%= post.created_at %>
+              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
             </div>
           <% end %>
         </div>

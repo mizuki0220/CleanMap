@@ -29,13 +29,13 @@
               <%= link_to "My Page", mypage_user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Post", new_post_path, class: 'nav-link text-dark' %>
+              <%= link_to "Post", new_post_path, class: 'nav-link text-dark ml-3' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Posts", posts_path, class: 'nav-link text-dark' %>
+              <%= link_to "Posts", posts_path, class: 'nav-link text-dark ml-3' %>
             </li>
             <li class="nav-item">
-              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark ml-3 mr-3' %>
             </li>
             <form class="form-inline">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -46,10 +46,10 @@
               <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
              <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark ml-3' %>
             </li>
             <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+              <%= link_to "About", about_path, class: 'nav-link text-dark ml-3  mr-2' %>
             </li>
           <% end %>
           </ul>
