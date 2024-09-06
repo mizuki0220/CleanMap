@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def mypage
+    @user = User.find(params[:id])
     @posts = current_user.posts
     @post_genres = PostGenre.where(id: @posts.pluck(:post_genre_id)).uniq
   end
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find(current_user.id)
+    @user = current_user
     @user.update(is_active: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
