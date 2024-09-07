@@ -2,22 +2,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-md-offset-2">
           <h2 class="text-center border-bottom border-secondary"><%= @genre %>Posts</h2>
-          <% @posts.each do |post| %>
-            <div>
-              <% if post.images.attached? %>
-                <% post.images.each do |image| %>
-                  <%= image_tag image, size: "100x100" %> <br>
-                <% end %>
-              <% else %>
-                <%= image_tag 'no_image', size: "100x100" %><br>
-              <% end %>
-              <h4><%= link_to post.title, post_path(post) %></h4>
-              <h5><%= post.body %></h5>
-              <p>ジャンル:<%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></p>
-              <p>投稿者: <%= post.user.name %></p>
-              <%= post.created_at.strftime('%Y年%m月%d日') %>
-            </div>
-          <% end %>
         </div>
     </div>
+
+<div class="card mb-4 w-100">
+  <% @posts.each do |post| %>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <%= image_tag image, size: "100x100" %> <br>
+          <% end %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %><br>
+        <% end %>
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h4 class="card-title text-truncate"><%= link_to post.title, post_path(post) %></h4>
+          <p class="card-text"><%= post.user.name %> / <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></p>
+          <h5 class="card-text text-truncate"><%= post.body %></h5>
+          <p class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %></small></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

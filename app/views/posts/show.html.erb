@@ -1,19 +1,24 @@
-<% if @post.images.attached? %>
-  <% @post.images.each do |image| %>
-    <%= image_tag image, size: "200x200" %> <br>
-  <% end %>
-<% else %>
-  <%= image_tag 'no_image', size: "200x200" %><br>
-<% end %>
-
-<p><%= @post.title %></p>
-<p><%= @post.body %></p>
-<p>ジャンル:<%= @genre %></p>
-<p>投稿者: <%= @post.user.name %></p>
-<%= @post.created_at.strftime('%Y年%m月%d日') %>
-
-<% if @user.id == current_user.id %>
-<%= link_to "編集", edit_post_path(@post.id) %>
-<%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
-
+<div class="containar">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-md-offset-2">
+      <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <%= image_tag image, size: "200x200" %> <br>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %><br>
+      <% end %>
+      
+      <p class="text-break">題名：<%= @post.title %></p>
+      <p class="text-break">内容：<%= @post.body %></p>
+      <p>ジャンル:<%= @genre %></p>
+      <p>投稿者: <%= @post.user.name %></p>
+      <p><%= @post.created_at.strftime('%Y年%m月%d日') %></p>
+      
+      <% if @user.id == current_user.id %>
+      <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-secondary" %>
+      <%= link_to "削除", post_path(@post.id), class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div> 
+  </div>
+</div>
