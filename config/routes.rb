@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'mypage'
+      patch 'withdraw'
     end
     collection do
       get 'unsubscribe'
-      patch 'withdraw'
     end
   end
 

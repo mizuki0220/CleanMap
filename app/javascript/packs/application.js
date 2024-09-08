@@ -14,6 +14,8 @@ import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/map";
 import "../stylesheets/top";
+import "../stylesheets/index";
+import "../stylesheets/show";
 import "images.js"
 
 
