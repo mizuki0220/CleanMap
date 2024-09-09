@@ -5,10 +5,10 @@
         </div>
     </div>
   <div class="row justify-content-center">
-    <div class="card mb-4 w-100">
+    <div class="card mb-4 w-75">
       <% @posts.each do |post| %>
-        <div class="pl-2 d-flex g-0">
-          <div class="col-md-4 row pt-5">
+        <div class="pl-2 d-flex g-0 border-bottom border-light">
+          <div class="col-md-6 row pt-5">
             <% if post.images.attached? %>
               <% post.images.each do |image| %>
               <div class="pl-2 pt-2 pb-2">
@@ -21,11 +21,11 @@
               </div>
             <% end %>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-6">
             <div class="card-body">
-              <h4 class="card-title text-truncate"><%= link_to post.title, post_path(post) %></h4>
+              <h4 class="card-title d-inline-block text-truncate" style="max-width: 150px;"><%= link_to post.title, post_path(post) %></h4>
               <p class="card-text"><%= post.user.name %> / <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></p>
-              <h5 class="card-text text-truncate"><%= post.body %></h5>
+              <h5 class="card-text d-inline-block text-truncate" style="max-width: 150px;"><%= post.body %></h5>
               <p class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %></small></p>
             </div>
           </div>

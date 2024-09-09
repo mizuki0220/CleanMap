@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+  before_action :guest_check, only: [:edit, :update, :withdraw]
 
   def mypage
     @user = User.find(params[:id])
@@ -32,7 +33,8 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-    private
+
+ private
 
   def user_params
     params.require(:user).permit(:name, :email)
@@ -42,6 +44,12 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to mypage_user_path(current_user.id)
+    end
+  end
+
+  def guest_check
+    if current_user == User.guest
+      redirect_to mypage_user_path(current_user.id), notice: 'ゲストユーザーはアクセスできません。'
     end
   end
 
