@@ -2,12 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-md-offset-2">
       <h2 class="text-center border-bottom border-secondary">編集</h2>
-
+      
       <% if @post.errors.any? %>
-        <h3><%= @post.errors.count %>error prohibited this obj from being saved:</h3>
-        <ul>
+        <ul class="alert alert-danger" role="alert">
+          <h6 class="alert-heading">
+            <%= @post.errors.count %>件のエラーが発生しました
+          </h6>
           <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <li><%= message %></li>
           <% end %>
         </ul>
       <% end %>

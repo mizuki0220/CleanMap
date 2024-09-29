@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+  before_action :is_matching_login_user, only: [:mypage, :edit, :update, :withdraw]
   before_action :guest_check, only: [:edit, :update, :withdraw]
 
   def mypage
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    @user.update(is_active: true)
+    @user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
