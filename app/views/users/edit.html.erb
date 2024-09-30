@@ -4,12 +4,14 @@
       <h2 class="text-center border-bottom border-secondary">User info</h2>
 
       <% if @user.errors.any? %>
-        <h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-          <% end %>
-        </ul>
+      <ul class="alert alert-danger" role="alert">
+        <h6 class="alert-heading">
+          <%= @user.errors.count %>件のエラーが発生しました
+        </h6>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
       <% end %>
 
       <%= form_with model: @user do |f| %>
