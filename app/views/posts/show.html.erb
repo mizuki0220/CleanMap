@@ -15,11 +15,11 @@
       <% end %>
       </div>
       <div class="ml-4 mr-4">
-        <p class="text-break">題名：<%= @post.title %></p>
-        <p class="text-break">内容：<%= @post.body %></p>
-        <p>ジャンル:<%= @genre %></p>
-        <p>投稿者: <%= @post.user.name %></p>
-        <p><%= @post.created_at.strftime('%Y年%m月%d日') %></p>
+        <h4 class="text-break pb-2"><%= @post.title %></h4>
+        <p class="text-break"><%= @post.body %></p>
+        <h6 class="pt-4">ジャンル: <%= @genre %></h6>
+        <h6>投稿者: <%= @post.user.name %></h6>
+        <h6><%= @post.created_at.strftime('%Y年%m月%d日') %></h6>
       </div>
       <% if @user.id == current_user.id %>
         <div class="ml-4 mr-4">
