@@ -37,10 +37,12 @@
             <li class="nav-item">
               <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark ml-3 mr-3' %>
             </li>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-dark" type="submit">Search</button>
-            </form>
+
+            <%= render 'searches/search' %>
+            <!--<form class="form-inline">-->
+            <!--  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--  <button class="btn btn-outline-dark" type="submit">Search</button>-->
+            <!--</form>-->
           <% else %>
              <li class="nav-item">
               <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
