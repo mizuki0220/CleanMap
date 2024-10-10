@@ -1,19 +1,19 @@
 <div class="container">
     <div class="row mb-4">
         <div class="col-sm-12">
-            <h1 class="text-center"><%= current_user.name %>さんの My Page</h1>
+            <h1 class="text-center"><%= @user.name %>さんの My Page</h1>
         </div>
     </div>
     <div class="row justify-content-center">
+        <% if @user.id == current_user.id %>
         <div class="col-sm-6 text-center border border-5 py-4 mb-4">
             <p>ユーザー名: <%= current_user.name %></p>
             <p>メールアドレス: <%= current_user.email %></p>
-            <% if @user.id == current_user.id %>
             <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-secondary" %>
             <%= link_to "退会", unsubscribe_users_path, class: "btn btn-danger ml-3" %>
-            <% end %>
         </div>
-    
+        <% end %>
+
       <div class="card mb-4 w-75">
         <% @posts.each do |post| %>
           <div class="pl-2 d-flex g-0 border-bottom border-light">
