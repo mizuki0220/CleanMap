@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validate :validate_number_of_files
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :post_genre
 
   validates :title, presence: true
@@ -27,19 +27,19 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("body LIKE?","#{word}")
-    elsif search == "forward_match"
-      @post = Post.where("body LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @post = Post.where("body LIKE?","#{word}%")
-    elsif search == "partial_match"
-      @post = Post.where("body LIKE?","#{word}%")
-    else
-      @post = Post.all
-    end
-  end
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @post = Post.where("body LIKE?","#{word}")
+  #   elsif search == "forward_match"
+  #     @post = Post.where("body LIKE?","#{word}%")
+  #   elsif search == "backward_match"
+  #     @post = Post.where("body LIKE?","#{word}%")
+  #   elsif search == "partial_match"
+  #     @post = Post.where("body LIKE?","#{word}%")
+  #   else
+  #     @post = Post.all
+  #   end
+  # end
 
 
   private

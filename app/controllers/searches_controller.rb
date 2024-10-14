@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "User"
+      byebug
       @users = User.looks(params[:search], params[:word])
     else
       @posts = Post.looks(params[:search], params[:word])

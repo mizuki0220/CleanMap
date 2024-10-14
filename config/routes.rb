@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:show]
-  resources :posts
-  resources :comments
+  resources :posts do 
+    resources :comments, only: [:create]
+  end 
   resources :post_genres
 
   resources :users do
