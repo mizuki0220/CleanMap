@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   get 'home/about' => 'homes#about', as: 'about'
+  get "search" => "searches#search"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -12,8 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:show]
-  resources :posts
-  resources :comments
+  resources :posts do 
+    resources :comments, only: [:create]
+  end 
   resources :post_genres
 
   resources :users do

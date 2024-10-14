@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
-  has_many :comment
+  has_many :comment, dependent: :destroy
 
   validates :name, presence: true
 
@@ -19,4 +19,21 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_active == true)
   end
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","#{word}%")
+    else
+      @user = User.all
+    end
+  end
+
+
 end
+
