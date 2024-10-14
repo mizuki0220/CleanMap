@@ -7,7 +7,7 @@
   <div class="row justify-content-center">
     <div class="card mb-4 w-75">
       <% @posts.each do |post| %>
-        <div class="pl-2 d-flex g-0 border-bottom border-light">
+        <div class="pl-2 d-flex g-0 border-bottom border-dark-subtle">
           <div class="col-md-6 row pt-5">
             <% if post.images.attached? %>
               <% post.images.each do |image| %>
@@ -23,10 +23,10 @@
           </div>
           <div class="col-md-6">
             <div class="card-body">
-              <h4 class="card-title d-inline-block text-truncate" style="max-width: 150px;"><%= link_to post.title, post_path(post) %></h4>
-              <p class="card-text"><%= link_to post.user.name, mypage_user_path(post.user_id) %> / <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></p>
+              <h4 class="card-title d-inline-block text-truncate mb-1" style="max-width: 150px;"><%= link_to post.title, post_path(post) %></h4><br>
               <h5 class="card-text d-inline-block text-truncate" style="max-width: 150px;"><%= post.body %></h5>
-              <p class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %></small></p>
+              <div class="card-text"><%= link_to post.user.name, mypage_user_path(post.user_id) %> / <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></div>
+              <div class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %></small></div>
             </div>
           </div>
         </div>
