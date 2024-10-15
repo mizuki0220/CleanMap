@@ -22,20 +22,27 @@
         <div>コメント件数：<%= @post.comments.count %></div>
       </div>
       <% if @user.id == current_user.id %>
-        <div class="ml-4 mr-4 mb-4">
+        <div class="ml-4 mr-4 mb-3">
           <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-secondary" %>
           <%= link_to "削除", post_path(@post.id), class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
         </div>
       <% end %>
-      <div class="ml-4 mb-3">
+
+      <div class="ml-4 mb-3 mt-5">
+        <h3>コメント</h3>
         <% @post.comments.each do |comment| %>
-          <div class="mb-3 border-bottom border-dark-subtle">
-            <div><%= comment.comment %></div>
-            <div><%= comment.user.name %></div>
-            <div><%= comment.created_at.strftime('%Y年%m月%d日') %></div>
+        <div class="card mb-3">
+          <div class="card-header"><%= comment.user.name %> さん</div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p><%= comment.comment %></p>
+              <footer class="blockquote-footer"><%= comment.created_at.strftime('%Y年%m月%d日') %></footer>
+            </blockquote>
           </div>
+        </div>
         <% end %>
       </div>
+
       <div class="ml-4">
         <%= form_with model: [@post, @comment] do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
