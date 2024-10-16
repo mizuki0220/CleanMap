@@ -1,41 +1,49 @@
 <div class="containar">
-  <div class="row justify-content-center">
-    <div class="col-md-7 col-md-offset-2 mb-4">
+  <div class="row justify-content-center mr-0">
+    <div class="col-md-8 col-md-offset-3 mb-4">
       <div class="d-flex flex-wrap pb-5">
       <% if @post.images.attached? %>
         <% @post.images.each do |image| %>
-          <div class="pl-3 pt-3">
+          <div class="pt-3 pl-3">
             <%= image_tag image, class: "img-fluid", size: "200x200" %>
           </div>
         <% end %>
       <% else %>
-        <div class="pl-3 pt-3">
+        <div class="pt-3 pl-3">
           <%= image_tag 'no_image', size: "200x200" %>
         </div>
       <% end %>
       </div>
-      <div class="ml-4 mr-4 mb-3">
+
+      <div class="mb-3 mr-4 ml-4">
         <h4 class="text-break pb-2"><%= @post.title %></h4>
         <p class="text-break"><%= @post.body %></p>
         <div class="pt-4">ジャンル: <%= @genre %> / 投稿者: <%= @post.user.name %></div>
-        <div><%= @post.created_at.strftime('%Y年%m月%d日') %></div>
-        <div>コメント件数：<%= @post.comments.count %></div>
+        <p><%= @post.created_at.strftime('%Y年%m月%d日') %></p>
+        <p>コメント件数：<%= @post.comments.count %></p>
       </div>
       <% if @user.id == current_user.id %>
-        <div class="ml-4 mr-4 mb-4">
+        <div class="mb-3 mr-4 ml-4">
           <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-secondary" %>
           <%= link_to "削除", post_path(@post.id), class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
         </div>
       <% end %>
-      <div class="ml-4 mb-3">
+
+      <div class="mt-5 mb-3 mr-4 ml-4">
+        <h3>コメント</h3>
         <% @post.comments.each do |comment| %>
-          <div class="mb-3 border-bottom border-dark-subtle">
-            <div><%= comment.comment %></div>
-            <div><%= comment.user.name %></div>
-            <div><%= comment.created_at.strftime('%Y年%m月%d日') %></div>
+        <div class="card mb-3">
+          <div class="card-header"><%= comment.user.name %> さん</div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <small><%= comment.comment %></small>
+              <footer class="blockquote-footer"><small><%= comment.created_at.strftime('%Y年%m月%d日') %></small></footer>
+            </blockquote>
           </div>
+        </div>
         <% end %>
       </div>
+
       <div class="ml-4">
         <%= form_with model: [@post, @comment] do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
