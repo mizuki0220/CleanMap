@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :admin, skip: [:registrations, :password], controllers: {
+    sessions: 'admin/sessions'
+  }
+
+  namespace :admin do
+    get 'dashboards', to: 'dashboards#index'
+    resources :users, only: [:destroy]
+  end
+
   root to: 'homes#top'
 
   get 'home/about' => 'homes#about', as: 'about'
@@ -13,9 +22,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:show]
-  resources :posts do 
+  resources :posts do
     resources :comments, only: [:create]
-  end 
+  end
   resources :post_genres
 
   resources :users do

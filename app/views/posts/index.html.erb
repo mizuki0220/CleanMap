@@ -25,8 +25,8 @@
             <div class="card-body">
               <h4 class="card-title d-inline-block text-truncate mb-1" style="max-width: 150px;"><%= link_to post.title, post_path(post) %></h4><br>
               <h5 class="card-text d-inline-block text-truncate" style="max-width: 150px;"><%= post.body %></h5>
-              <div class="card-text"><%= link_to post.user.name, mypage_user_path(post.user_id) %> / <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></div>
-              <div class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %></small></div>
+              <div class="card-text"><%= link_to post.user.name, mypage_user_path(post.user_id) %> ｜ <%= link_to post.post_genre.name, posts_path(genre: post.post_genre.name) %></div>
+              <div class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %>&emsp;<i class="fa-regular fa-comment">  <%= post.comments.count %></i></small></div>
             </div>
           </div>
         </div>
