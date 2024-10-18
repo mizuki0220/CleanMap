@@ -7,8 +7,8 @@
           <div class="card-text">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
-                <%= f.label :Name %><br />
-                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+                <%= f.label :Email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
               </div>
 
               <div class="field">
