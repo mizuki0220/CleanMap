@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+    resources :users, only: [:destroy, :show, :index]
   end
 
   root to: 'homes#top'
@@ -40,6 +40,12 @@ Rails.application.routes.draw do
   resources :homes do
     collection do
       get 'map'
+    end
+  end
+
+  namespace :admin do
+    resources :users do
+      get 'user_posts', on: :member
     end
   end
 

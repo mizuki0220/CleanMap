@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin - CleanMap</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-<body>
-  <% if admin_signed_in? %>
-    <div class="text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-    </div>
-  <% end %>
-  <%= yield %>
-</body>
+  <head>
+    <title>Admin - CleanMap</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b0c4de;">
+        <div class="container-fluid">
+        <%= link_to image_tag("cleanmaplogo3.png", class:'nav-link text-light', width: '90', height: '70'), "/admin/dashboards" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark ml-4' %>
+            </li>
+          <% end %>
+
+          </ul>
+        </div>
+        </div>
+      </nav>
+    </header>
+    <p class="alert text-center"><%= notice %></p>
+    <p class="alert text-center"><%= alert %></p>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+  </body>
 </html>
