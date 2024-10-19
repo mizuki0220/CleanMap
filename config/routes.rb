@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy, :show, :index]
+    resources :dashboards, only: [:index, :destroy]
+    resources :users, only: [:destroy, :show]
+  end
+
+  namespace :admin do
+    resources :post_genres
   end
 
   root to: 'homes#top'
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [:create]
   end
-  resources :post_genres
 
   resources :users do
     member do

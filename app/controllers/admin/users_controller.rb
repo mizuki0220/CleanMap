@@ -1,9 +1,6 @@
 class Admin::UsersController < ApplicationController
+  layout 'admin'
   before_action :authenticate_admin!
-
-  def index
-    @users = User.all
-  end
 
   def show
     @user = User.find(params[:id])
@@ -12,14 +9,15 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_posts
-    @user = User.find(params[:id])
-    @posts = @user.posts
-    @post_genres = PostGenre.where(id: @posts.pluck(:post_genre_id)).uniq
+    @post = Post.find(params[:post_id])
+    @user = @post.user
+    @genre = @post.post_genre.name
+    @comment = Comment.new
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_dashboards_path, notice: 'ユーザーを削除しました。'
+    redirect_to admin_dashboards_path, notice: '削除しました。'
   end
 end

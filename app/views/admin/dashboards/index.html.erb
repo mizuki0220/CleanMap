@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-sm-12">
-      <h2 class="text-center">全ユーザー一覧</h2>
+      <h2 class="text-center pb-3">全ユーザー一覧</h2>
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
@@ -17,7 +17,7 @@
               <td><%= user.name %></td>
               <td><%= user.email %></td>
               <td><%= link_to '投稿一覧へ', admin_user_path(user), class: 'btn btn-success' %></td>
-              <td><%= link_to '削除', admin_user_path(user), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %></td>
+              <td><%= link_to '削除', admin_dashboard_path(user), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger" %></td>
             </tr>
             <% end %>
           </tbody>

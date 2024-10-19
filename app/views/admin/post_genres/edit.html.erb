@@ -13,7 +13,7 @@
         </ul>
       <% end %>
 
-      <%= form_with model: @post_genre do |f| %>
+      <%= form_with model: @post_genre, url: admin_post_genre_path(@post_genre) do |f| %>
         <div class="form-group">
           <%= f.label :投稿ジャンル名 %>
           <%= f.text_field :name, class: "form-control" %>
@@ -24,7 +24,7 @@
         </div>
       <% end %>
 
-      <%= link_to 'Back', "/post_genres" %>
+      <%= link_to 'Back', "/admin/post_genres" %>
 
     </div>
   </div>
