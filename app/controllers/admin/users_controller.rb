@@ -20,4 +20,12 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_dashboards_path, notice: '削除しました。'
   end
+
+
+private
+
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
+
 end
