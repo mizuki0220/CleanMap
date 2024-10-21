@@ -21,6 +21,7 @@
         <div class="pt-4">ジャンル: <%= @genre %> ｜ 投稿者: <%= @post.user.name %></div>
         <p><%= @post.created_at.strftime('%Y年%m月%d日') %></p>
         <p>コメント件数：<%= @post.comments.count %></p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end"><%= link_to 'この投稿を削除', delete_post_admin_user_path(@post), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
       </div>
 
       <div class="mt-5 mb-3 mr-4 ml-4">
@@ -31,7 +32,9 @@
           <div class="card-body">
             <blockquote class="blockquote mb-0">
               <small><%= comment.comment %></small>
-              <footer class="blockquote-footer"><small><%= comment.created_at.strftime('%Y年%m月%d日') %></small></footer>
+              <footer class="blockquote-footer"><small><%= comment.created_at.strftime('%Y年%m月%d日') %></small>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end"><%= link_to "このコメントを削除", delete_comment_admin_user_path(comment.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+              </footer>
             </blockquote>
           </div>
         </div>

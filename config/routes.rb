@@ -5,11 +5,28 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboards, only: [:index, :destroy]
-    resources :users, only: [:destroy, :show]
+    resources :users, only: [:show]
   end
 
   namespace :admin do
     resources :post_genres
+  end
+
+  namespace :admin do
+    resources :users do
+      get 'user_posts', on: :member
+    end
+  end
+
+  namespace :admin do
+    resources :users do
+      member do
+        delete 'delete_post', to: 'users#delete_post'
+      end
+      member do
+        delete 'delete_comment', to: 'users#delete_comment'
+      end
+    end
   end
 
   root to: 'homes#top'
@@ -43,12 +60,6 @@ Rails.application.routes.draw do
   resources :homes do
     collection do
       get 'map'
-    end
-  end
-
-  namespace :admin do
-    resources :users do
-      get 'user_posts', on: :member
     end
   end
 
