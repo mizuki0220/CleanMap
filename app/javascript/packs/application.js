@@ -12,10 +12,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "../stylesheets/top";
-import "../stylesheets/index";
-import "../stylesheets/show";
-import "images.js"
 
 
 Rails.start()

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row mb-4">
+      <div class="col-sm-12">
+        <h2 class="text-center"><%= @user.name %>さんの投稿一覧</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="card mb-4 w-75">
+        <% @posts.each do |post| %>
+          <div class="pl-2 d-flex g-0 border-bottom border-dark-subtle">
+            <div class="col-md-6 row pt-5">
+              <% if post.images.attached? %>
+                <% post.images.each do |image| %>
+                <div class="pl-2 pt-2 pb-2">
+                  <%= image_tag image, size: "90x90" %>
+                </div>
+                <% end %>
+              <% else %>
+                <div class="pl-2">
+                  <%= image_tag 'no_image', size: "90x90" %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4 class="card-title d-inline-block text-truncate" style="max-width: 150px;"><%= link_to post.title, user_posts_admin_user_path(@user.id, post_id: post.id) %></h4><br>
+                <h5 class="card-text d-inline-block text-truncate" style="max-width: 150px;"><%= post.body %></h5>
+                <div class="card-text"><%= post.user.name %> ｜ <%= post.post_genre.name %></div>
+                <div class="card-text"><small class="text-body-secondary"><%= post.created_at.strftime('%Y年%m月%d日') %>&emsp;<i class="fa-regular fa-comment">  <%= post.comments.count %></i></small></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>

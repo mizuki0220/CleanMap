@@ -1,4 +1,4 @@
-class Users::SessionsController < Devise::SessionsController
+class Public::Users::SessionsController < Devise::SessionsController
   before_action :reject_user, only: [:create]
 
   def guest_sign_in
