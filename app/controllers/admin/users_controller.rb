@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
   layout 'admin'
-  before_action :authenticate_admin!
 
   def show
     @user = User.find(params[:id])
@@ -22,12 +21,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def delete_comment
-    comment = Comment.find(params[:id])
-    post_id = comment.post_id
-    post = Post.find(post_id) # コメントから投稿を取得
-    @user = post.user
-    comment.destroy
-    redirect_to user_posts_admin_user_path(@user.id, post_id), notice: "コメントを削除しました。"
+    post = Post.find(params[:post_id])
+    Comment.find(params[:id]).destroy
+    redirect_to user_posts_admin_user_path(post_id: post.id), notice: "コメントを削除しました。"
   end
 
 

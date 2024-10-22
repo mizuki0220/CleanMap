@@ -1,6 +1,5 @@
 class Admin::PostGenresController < ApplicationController
   layout 'admin'
-  before_action :authenticate_admin!
 
   def index
     @post_genre = PostGenre.new
