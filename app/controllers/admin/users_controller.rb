@@ -1,5 +1,9 @@
 class Admin::UsersController < ApplicationController
   layout 'admin'
+  
+  def index
+    @comment = Comment.all
+  end 
 
   def show
     @user = User.find(params[:id])

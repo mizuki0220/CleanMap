@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboards, only: [:index, :destroy]
-    resources :users, only: [:show]
+    resources :users, only: [:index, :show]
   end
 
   namespace :admin do
@@ -24,7 +24,11 @@ Rails.application.routes.draw do
         delete 'delete_post', to: 'users#delete_post'
       end
     end
+
     delete 'comments/:id', to: 'users#delete_comment', as: "delete_comment"
+
+     
+
   end
 
 
