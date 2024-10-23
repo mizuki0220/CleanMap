@@ -21,8 +21,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def delete_comment
-    post = Post.find(params[:post_id])
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
+    post = comment.post
+    comment.destroy
     redirect_to user_posts_admin_user_path(post_id: post.id), notice: "コメントを削除しました。"
   end
 
