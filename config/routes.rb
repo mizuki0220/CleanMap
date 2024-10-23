@@ -23,12 +23,12 @@ Rails.application.routes.draw do
       member do
         delete 'delete_post', to: 'users#delete_post'
       end
+      member do
+        delete 'delete_comment', to: 'users#delete_comment'
+      end
     end
 
     delete 'comments/:id', to: 'users#delete_comment', as: "delete_comment"
-
-     
-
   end
 
 
