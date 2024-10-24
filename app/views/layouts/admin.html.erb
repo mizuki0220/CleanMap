@@ -24,7 +24,10 @@
 
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'ユーザー一覧', admin_dashboards_path, class: 'nav-link text-dark mb-2 ml-4 btn btn-outline-secondary' %>
+              <%= link_to 'ユーザー 一覧', admin_dashboards_path, class: 'nav-link text-dark mb-2 ml-4 btn btn-outline-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'コメント 一覧', admin_users_path, class: 'nav-link text-dark mb-2 ml-4 btn btn-outline-secondary' %>
             </li>
             <li class="nav-item">
               <%= link_to 'ジャンル編集', admin_post_genres_path, class: 'nav-link text-dark mb-2 ml-4 btn btn-outline-secondary' %>

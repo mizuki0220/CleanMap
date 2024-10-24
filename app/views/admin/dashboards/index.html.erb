@@ -10,6 +10,7 @@
               <th>Eメール</th>
               <th>会員ステータス</th>
               <th>投稿</th>
+              <th>コメント</th>
               <th>削除</th>
             </tr>
           </thead>
@@ -20,7 +21,8 @@
               <td><%= user.name %></td>
               <td><%= user.email %></td>
               <td><%= user.is_active ? '有効' : '退会済み' %></td>
-              <td><%= link_to '投稿一覧へ', admin_user_path(user), class: 'btn btn-success' %></td>
+              <td><%= link_to '投稿一覧へ', admin_user_path(user), class: 'btn btn-link' %></td>
+              <td><%= link_to 'コメント一覧へ', user_comments_admin_user_path(user), class: 'btn btn-link' %></td>
               <td><%= link_to '削除', admin_dashboard_path(user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
             </tr>
             <% end %>
