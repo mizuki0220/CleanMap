@@ -37,11 +37,11 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
     devise_for :users, controllers: {
-      registrations: 'public/users/registrations'
+      registrations: 'public/registrations'
     }
 
     devise_scope :user do
-      post 'users/guest_sign_in', to: 'public/users/sessions#guest_sign_in'
+      post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
     end
 
     resources :users, except: [:show]
