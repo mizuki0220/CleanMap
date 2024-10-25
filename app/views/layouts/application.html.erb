@@ -44,11 +44,14 @@
             <!--  <button class="btn btn-outline-dark" type="submit">Search</button>-->
             <!--</form>-->
           <% else %>
-             <li class="nav-item">
+            <li class="nav-item">
               <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark ml-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Guest", users_guest_sign_in_path, method: :post, class: 'nav-link text-dark ml-3' %>
             </li>
             <li class="nav-item">
               <%= link_to "About", about_path, class: 'nav-link text-dark ml-3  mr-2' %>

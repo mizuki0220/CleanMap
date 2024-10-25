@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6 col-sm-6">
-      <div class="card text-center">
+      <% if flash[:error].present? %>
+        <div class="text-center">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+      <div class="card text-center mb-5">
         <h5 class="card-header" style="background-color: #88b5d3;">Sign up</h5>
         <div class="card-body">
           <div class="card-text">

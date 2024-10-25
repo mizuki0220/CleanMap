@@ -1,9 +1,9 @@
 class Admin::UsersController < ApplicationController
   layout 'admin'
-  
+
   def index
-    @comment = Comment.all
-  end 
+    @comments = Comment.all
+  end
 
   def show
     @user = User.find(params[:id])
@@ -15,6 +15,11 @@ class Admin::UsersController < ApplicationController
     @post = Post.find(params[:post_id])
     @user = @post.user
     @genre = @post.post_genre.name
+  end
+
+  def user_comments
+    @user = User.find(params[:id])
+    @comments = @user.comments
   end
 
   def delete_post
