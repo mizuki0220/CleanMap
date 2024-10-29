@@ -8,7 +8,7 @@ class Admin::PostGenresController < ApplicationController
 
   def create
     @post_genre = PostGenre.new(post_genre_params)
-    if @post_genre.save!
+    if @post_genre.save
       flash[:notice] = "正常に登録しました"
       redirect_to admin_post_genres_path
     else
