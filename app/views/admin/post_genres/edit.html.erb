@@ -5,12 +5,14 @@
       <h2>ジャンル編集</h2>
 
       <% if @post_genre.errors.any? %>
-        <h3><%= @post_genre.errors.count %>error prohibited this obj from being saved:</h3>
-        <ul>
-          <% @post_genre.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-          <% end %>
-        </ul>
+        <div id="error_explanation" data-turbo-cache="false" class="alert alert-danger" role="alert">
+          <h3 class="alert-heading"><%= @post_genre.errors.count %>件のエラーがあります。</h3>
+          <ul>
+            <% @post_genre.errors.full_messages.each do |message| %>
+          <li class="list-unstyled"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
 
       <%= form_with model: @post_genre, url: admin_post_genre_path(@post_genre) do |f| %>

@@ -29,6 +29,8 @@ ja:
         title: 題名
         body: 内容
         post_genre: 投稿ジャンル
+      post_genre:
+        name: 投稿ジャンル名
     models:
       user: ユーザ
   devise:
