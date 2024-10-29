@@ -11,9 +11,9 @@ class Public::SearchesController < ApplicationController
     end
 
     if @users.present? || @posts.present?
-      render "searches/search_results"
+      render "public/searches/search_results"
     else
-      render "searches/no_results"
+      render "public/searches/no_results"
     end
   end
 end
