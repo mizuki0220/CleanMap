@@ -9,7 +9,8 @@
         <div class="col-sm-6 text-center border border-5 py-4 mb-4">
             <p>ユーザー名: <%= current_user.name %></p>
             <p>メールアドレス: <%= current_user.email %></p>
-            <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-secondary" %>
+            <%= link_to "コメント一覧", post_comment_path(@comments), class: "btn btn-secondary" %>
+            <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-secondary ml-3" %>
             <%= link_to "退会", unsubscribe_users_path, class: "btn btn-danger ml-3" %>
         </div>
         <% end %>

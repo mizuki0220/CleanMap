@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @post_genres = PostGenre.where(id: @posts.pluck(:post_genre_id)).uniq
+    @comments = @user.comments
   end
 
   def edit
