@@ -1,5 +1,4 @@
 class Public::CommentsController < ApplicationController
-  before_action :is_matching_login_user, only: [:create, :destroy]
 
   def show
     @user = User.find(params[:id])
@@ -25,13 +24,6 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment, :post_id, :user_id)
-  end
-
-  def is_matching_login_user
-    comment = Comment.find(params[:id])
-    unless comment.user.id == current_user.id
-      redirect_to mypage_user_path(current_user.id)
-    end
   end
 
 end
