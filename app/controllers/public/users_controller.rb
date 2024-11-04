@@ -1,11 +1,16 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+  before_action :is_matching_login_user, only: [:index, :edit, :update, :withdraw]
   before_action :guest_check, only: [:edit, :update, :withdraw]
 
   def mypage
     @user = User.find(params[:id])
     @posts = @user.posts
     @post_genres = PostGenre.where(id: @posts.pluck(:post_genre_id)).uniq
+    @comments = @user.comments
+  end
+
+  def show
+    @user = User.find(params[:id])
     @comments = @user.comments
   end
 
