@@ -44,7 +44,7 @@ Rails.application.routes.draw do
       post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
     end
 
-    resources :users, except: [:show]
+    resources :users, except: [:index]
     resources :posts do
       resources :comments, only: [:show, :create, :destroy]
     end
