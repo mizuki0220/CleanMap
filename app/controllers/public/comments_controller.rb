@@ -1,11 +1,5 @@
 class Public::CommentsController < ApplicationController
   before_action :is_matching_login_user, only: [:show, :destroy]
-  
-  # def show
-  #   @user = User.find(params[:id])
-  #   @comments = @user.comments
-  # end
-
 
   def create
     post = Post.find(params[:post_id])
