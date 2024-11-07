@@ -31,6 +31,17 @@
 
       <div class="mt-5 mb-3 mr-4 ml-4">
         <h3>コメント</h3>
+        <% if @comment.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @comment.errors.count %>件のエラーが発生しました
+            </h6>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <% @post.comments.each do |comment| %>
         <div class="card mb-3">
           <div class="card-header d-flex justify-content-between">

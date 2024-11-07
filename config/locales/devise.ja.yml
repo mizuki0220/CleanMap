@@ -31,6 +31,9 @@ ja:
         post_genre: 投稿ジャンル
       post_genre:
         name: 投稿ジャンル名
+      comment:
+        comment: コメント
+        evaluation: 星評価
     models:
       user: ユーザ
   devise:

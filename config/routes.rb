@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
     resources :users, except: [:index]
     resources :posts do
-      resources :comments, only: [:show, :create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     resources :users do
