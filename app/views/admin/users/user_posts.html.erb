@@ -28,7 +28,10 @@
         <h3>コメント</h3>
         <% @post.comments.each do |comment| %>
         <div class="card mb-3">
-          <div class="card-header"><%= comment.user.name %> さん</div>
+          <div class="card-header d-flex justify-content-between">
+            <%= comment.user.name %> さん
+            <div class="text-right"><%= render "public/posts/output_evaluation", comment: comment %></div>
+          </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
               <small><%= comment.comment %></small>
