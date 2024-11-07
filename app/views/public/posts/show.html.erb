@@ -33,7 +33,10 @@
         <h3>コメント</h3>
         <% @post.comments.each do |comment| %>
         <div class="card mb-3">
-          <div class="card-header"><%= comment.user.name %> さん</div>
+          <div class="card-header d-flex justify-content-between">
+            <%= comment.user.name %> さん
+            <div class="text-right"><%= render "output_evaluation", comment: comment %></div>
+          </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
               <small><%= comment.comment %></small>
@@ -51,6 +54,22 @@
       <div class="ml-4">
         <%= form_with model: [@post, @comment] do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
+          <div class="form-group position-static">
+            <div id="comment_raty"></div> <!-- 星を出力するセレクタ -->
+            <% if @comment.id.nil? %> <!-- 新規投稿か判別 -->
+              <script>
+                  var elem = document.querySelector('#comment_raty');
+                  var opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      scoreName: 'comment[evaluation]',
+                  };
+                  raty(elem,opt);
+              </script>
+            <% else %>
+              <%= render "output_evaluation", comment: comment %>
+            <% end %>
+          </div>
           <%= f.submit "送信する" %>
         <% end %>
       </div>
