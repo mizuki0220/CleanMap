@@ -53,10 +53,11 @@ Rails.application.routes.draw do
       member do
         get 'mypage'
         patch 'withdraw'
-      end
-      collection do
         get 'unsubscribe'
       end
+      # collection do
+      #   get 'unsubscribe'
+      # end
     end
 
     resources :homes do
