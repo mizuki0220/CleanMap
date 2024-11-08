@@ -11,7 +11,7 @@
             <p>メールアドレス: <%= current_user.email %></p>
             <%= link_to "コメント一覧", user_path(current_user.id), class: "btn btn-secondary" %>
             <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-secondary ml-3" %>
-            <%= link_to "退会", unsubscribe_users_path, class: "btn btn-danger ml-3" %>
+            <%= link_to "退会", unsubscribe_user_path(current_user.id), class: "btn btn-danger ml-3" %>
         </div>
         <% end %>
 
