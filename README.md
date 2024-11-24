@@ -37,3 +37,8 @@
 * JSライブラリ:jQuery
 * IDE:Cloud9
 
+### 使用素材
+＊フリーイラスト素材として下記を使用
+  ＊イラストAC https://www.ac-illust.com/
+  ＊Canva https://www.canva.com/
+  *いらすとや　https://www.irasutoya.com/
